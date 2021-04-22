@@ -1,0 +1,63 @@
+body {
+  color: #fff;
+  font-family: "Comfortaa", sans-serif;
+  background-image: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%);
+}
+
+h1 {
+  line-height: 35px;
+}
+
+strong {
+  font-size: 45px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.searchBar {
+  margin: 20px;
+  text-align: center;
+}
+
+.todayBox {
+  margin-left: 100px;
+  padding-top: 40px;
+  text-align: center;
+}
+
+.topTemp {
+  font-size: 45px;
+  font-weight: 900;
+}
+
+.topIcon {
+  color: #fff;
+  font-size: 45px;
+}
+
+.container {
+  margin: 0;
+}
+
+.time {
+  border-left: 1px solid rgba(255, 255, 255, 0.384);
+  line-height: 25px;
+  margin-top: 40px;
+  padding-right: 40px;
+  text-align: center;
+}
+
+.weekdays {
+  margin-left: 40px;
+}
+
+.weekright {
+  margin-right: 35px;
+  text-align: center;
+}
+
+.space {
+  margin: 15px;
+}

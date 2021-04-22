@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/4c79054d1b.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <title>Weather</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <link rel="stylesheet" href="weatherStyles.css" />
+</head>
+
+<body>
+
+  <form class=searchBar id="search-city">
+    <input type="search" id="search-input" placeholder="City">
+    <input type="submit" value="Search">
+  </form>
+  
+  <div class="todayBox">
+          <h1>
+            Vancouver <br />
+            <small>Today</small>
+          </h1>
+          <div class="topIcon">
+            <i class="fas fa-cloud"></i>
+          </div>
+
+          <h2 class="topTemp">
+            48°
+          </h2>
+          <p class="topHighLow">
+            H:48° L:36°
+          </p>
+          <h3 class="topTime">
+            Tuesday 16:00
+          </h3>
+    </div>
+    
+    <hr />
+
+    <div class="row">
+      <div class="col 3">
+
+        <ul class="weekdays">
+          <li>
+            Monday
+          </li>
+          <br />
+          <li>
+            Tuesday
+          </li>
+          <br />
+          <li>
+            Wednesday
+          </li>
+          <br />
+          <li>
+            Thursday
+          </li>
+          <br />
+          <li>
+            Friday
+          </li>
+          <br />
+          <li>
+            Saterday
+          </li>
+          <br />
+          <li>
+            Sunday
+          </li>
+
+        </ul>
+
+      </div>
+
+      <div class="col 9">
+        <ul class="weekright">
+
+          <li class="monday">
+            <i class="fas fa-cloud-rain"></i>
+            <span class="space"></span>
+            H:52° L:34°
+          </li>
+
+          <br />
+
+          <li class="tuesday">
+            <i class="fas fa-sun"></i>
+            <span class="space"></span>
+            H:55° L:32°
+          </li>
+
+          <br />
+
+          <li class="wednesday">
+            <i class="fas fa-cloud-sun"></i>
+            <span class="space"></span>
+            H:70° L:43°
+          </li>
+
+          <br />
+
+          <li class="thursday">
+            <i class="fas fa-cloud-sun"></i>
+            <span class="space"></span>
+            H:61° L:39°
+          </li>
+
+          <br />
+
+          <li class="friday">
+            <i class="fas fa-cloud"></i>
+            <span class="space"></span>
+            H:61° L:39°
+          </li>
+
+          <br />
+
+          <li class=saterday>
+            <i class="fas fa-cloud-rain"></i>
+            <span class="space"></span>
+            H:57° L:41°
+          </li>
+
+          <br />
+
+          <li class="sunday">
+            <i class="fas fa-cloud-rain"></i>
+            <span class="space"></span>
+            H:54° L:37°
+          </li>
+
+        </ul>
+      </div>
+    </div>
+    
+<script>
+  //Time and Day
+  let now = new Date();
+  
+  let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
+  ];
+  let day = days[now.getDay()];
+  
+  let hour = now.getHours();
+  let minute = now.getMinutes();
+  let dayTime = document.querySelector("h3");
+  dayTime.innerHTML = `${day} ${hour}:${minute}`;
+  
+  //City Search and change
+  function cityChange(event) {
+  event.preventDefault();
+  let input = document.querySelector("#search-input");
+  let h1 = document.querySelector("h1");
+  h1.innerHTML = `${input.value} <br />
+  <small>Today</small> `;
+
+ let apiUrl =
+  `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=e411a3752881f98038e4e57881b9b78f&units=imperial`;
+  
+  function showTemp(response) {
+  let dayTemp = Math.round(response.data.main.temp);
+  console.log(dayTemp);
+  let headTemp = `${dayTemp}°F`;
+  let h2 = document.querySelector("h2");
+  h2.innerHTML = headTemp;
+
+  let maxTemp = Math.round(response.data.main.temp_max);
+  let minTemp = Math.round(response.data.main.temp_min);
+  let highLow = ` H: ${maxTemp}° L: ${minTemp}°`;
+    let hl = document.querySelector(".topHighLow");
+    hl.innerHTML = highLow;
+  }
+  axios.get(apiUrl).then(showTemp);
+}
+
+  let city = document.querySelector("#search-city");
+  city.addEventListener("submit", cityChange);
+
+</script>
+</body>
+</html>
