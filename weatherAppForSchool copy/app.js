@@ -1,4 +1,3 @@
-//Time Clock
 let now = new Date();
 
 let days = [
@@ -67,8 +66,9 @@ function displayPosition(position) {
   axios.get(apiUrl).then(showCurrentTemperature);
 }
 
-function getLocation(location) {
+function getLocation(place) {
   navigator.geolocation.getCurrentPosition(displayPosition);
 }
-let location = document.querySelector("#location");
-location.addEventListener("click", getLocation);
+let place = document.querySelector("#local");
+place.addEventListener("click", getLocation);
+

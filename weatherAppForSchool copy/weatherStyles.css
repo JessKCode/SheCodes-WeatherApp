@@ -12,6 +12,11 @@ strong {
   font-size: 45px;
 }
 
+h3 {
+  font-size: 20px;
+  font-weight: lighter;
+}
+
 ul {
   list-style-type: none;
 }
