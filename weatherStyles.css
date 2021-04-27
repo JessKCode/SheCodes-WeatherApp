@@ -1,7 +1,6 @@
 body {
   color: #000;
   font-family: "Comfortaa", sans-serif;
-  background: linear-gradient(to top, #dfe9f3 0%, white 100%);
 }
 
 h1 {
@@ -14,18 +13,20 @@ strong {
 
 h3 {
   font-size: 20px;
-  font-weight: lighter;
 }
 
 .searchBar {
-  margin: 20px;
+  margin-top: 15px;
+  margin-bottom: 50px;
   text-align: center;
 }
 
 .todayBox {
-  margin-left: 100px;
-  padding-top: 40px;
+  border: #000 solid 1px;
+  border-radius: 30px;
+  padding-bottom: 15px;
   text-align: center;
+  margin: 50px;
 }
 
 .topTemp {
@@ -34,7 +35,7 @@ h3 {
 }
 
 .topIcon {
-  color: #fff;
+  color: rgb(224, 224, 224);
   font-size: 45px;
 }
 
