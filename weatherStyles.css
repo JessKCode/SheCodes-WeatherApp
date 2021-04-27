@@ -1,7 +1,7 @@
 body {
   color: #fff;
   font-family: "Comfortaa", sans-serif;
-  background-image: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%);
+  background: linear-gradient(to top, #dfe9f3 0%, white 100%);
 }
 
 h1 {
@@ -15,10 +15,6 @@ strong {
 h3 {
   font-size: 20px;
   font-weight: lighter;
-}
-
-ul {
-  list-style-type: none;
 }
 
 .searchBar {
@@ -40,31 +36,6 @@ ul {
 .topIcon {
   color: #fff;
   font-size: 45px;
-}
-
-.container {
-  margin: 0;
-}
-
-.time {
-  border-left: 1px solid rgba(255, 255, 255, 0.384);
-  line-height: 25px;
-  margin-top: 40px;
-  padding-right: 40px;
-  text-align: center;
-}
-
-.weekdays {
-  margin-left: 40px;
-}
-
-.weekright {
-  margin-right: 35px;
-  text-align: center;
-}
-
-.space {
-  margin: 15px;
 }
 
 .link {
