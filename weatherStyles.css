@@ -24,9 +24,11 @@ h3 {
 .todayBox {
   border: #000 solid 1px;
   border-radius: 30px;
+  max-width: 600px;
+  display: block;
+  margin: 50px auto;
   padding-bottom: 15px;
   text-align: center;
-  margin: 50px;
 }
 
 .topTemp {
