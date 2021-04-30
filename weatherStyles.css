@@ -23,6 +23,7 @@ strong {
 }
 
 .todayBox {
+  background: linear-gradient(to top, #dfe9f3 0%, white 100%);
   border: #000 solid 1px;
   border-radius: 30px;
   box-shadow: 9px 9px 5px rgba(0, 0, 0, 0.068);
@@ -36,7 +37,7 @@ strong {
 }
 
 .topIcon {
-  color: rgb(170, 168, 168);
+  color: #c4ccd6;
   font-size: 45px;
 }
 .info-box {
