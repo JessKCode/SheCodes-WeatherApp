@@ -11,12 +11,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
   <link rel="stylesheet" href="weatherStyles.css" />
 </head>
 
 <body>
+<div class="container">
 <div class="page-wrapper">
+  
   <div class="todayBox">
 
     <form class="searchBar" id="search-city">
@@ -24,10 +25,12 @@
       <input type="submit" value="Search" />
       <input type="submit" id="local" value="My Location" />
     </form>
-
-          <h1>
-            Vancouver <br />
-            <small>Today</small>
+    
+    <div class="row">
+      <div class="col">
+         <h1>
+            Vancouver 
+            <br/>
           </h1>
           <div class="topIcon">
             <i class="fas fa-cloud"></i>
@@ -39,16 +42,33 @@
           <p class="topHighLow">
             H:48° L:36°
           </p>
-          <h3 class="topTime">
-            Tuesday 16:00
-          </h3>
+  </div>
+
+    <div class="col">
+      <h3 class="topTime">
+        Tuesday 16:00
+      </h3>
+  
+      <p class="weather-description">
+        Cloudy
+      </p>
+      <p class="wind-speed">
+        Wind speed: 4 mph
+      </p>
+      <p class="percipitation">
+        Percipitation: 20%
+      </p>
+      </div>
     </div>
+    </div>
+  
     <p class="link">
     <a href="https://github.com/JessKCode/SheCodes-WeatherApp" target="_blank">
     Open-source code
     </a>
   by Jessica Carter
   </p>
+  
   </div>
 </body>
 <script src="app.js"></script>

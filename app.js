@@ -22,8 +22,7 @@ function cityChange(event) {
   event.preventDefault();
   let input = document.querySelector("#search-input");
   let h1 = document.querySelector("h1");
-  h1.innerHTML = `${input.value} <br />
-  <small>Today</small> `;
+  h1.innerHTML = `${input.value}`;
 
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=e411a3752881f98038e4e57881b9b78f&units=imperial`;
 
@@ -53,9 +52,7 @@ function showCurrentTemperature(response) {
   let h2 = document.querySelector("h2");
   h2.innerHTML = headTemp;
   let h1 = document.querySelector("h1");
-  h1.innerHTML = `My Location
-   <br />
-  <small>Today</small> `;
+  h1.innerHTML = `My Location`;
 }
 
 function displayPosition(position) {

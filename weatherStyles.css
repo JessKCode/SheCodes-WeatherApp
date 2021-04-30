@@ -4,16 +4,13 @@ body {
 }
 
 h1 {
-  line-height: 35px;
+  line-height: 50px;
 }
 
 strong {
   font-size: 45px;
 }
 
-h3 {
-  font-size: 20px;
-}
 .page-wrapper {
   max-width: 600px;
   display: block;
@@ -21,7 +18,7 @@ h3 {
 }
 .searchBar {
   margin-top: 15px;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
   text-align: center;
 }
 
@@ -29,7 +26,7 @@ h3 {
   border: #000 solid 1px;
   border-radius: 30px;
   box-shadow: 9px 9px 5px rgba(0, 0, 0, 0.068);
-  padding-bottom: 15px;
+  padding: 15px;
   text-align: center;
 }
 
@@ -39,10 +36,22 @@ h3 {
 }
 
 .topIcon {
-  color: rgb(224, 224, 224);
+  color: rgb(170, 168, 168);
   font-size: 45px;
 }
-
+.info-box {
+  margin-top: 20px;
+  padding-top: 18px;
+  padding-left: 50px;
+  border: #000 solid 1px;
+  border-radius: 30px;
+  box-shadow: 9px 9px 5px rgba(0, 0, 0, 0.068);
+}
+.topTime {
+  line-height: 50px;
+  font-size: 22px;
+  padding-bottom: 15px;
+}
 .link {
   margin-top: 20px;
   font-size: 12px;
