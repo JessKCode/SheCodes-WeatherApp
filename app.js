@@ -67,11 +67,19 @@ function showCurrentWeather(response) {
   h2.innerHTML = headTemp;
   let h1 = document.querySelector("h1");
   h1.innerHTML = `My Location`;
-   let windSpeed = Math.round(response.data.wind.speed);
-  console.log (windSpeed);
-  let speed = document.querySelector(".wind");
-  speed.innerHTML = `Wind Speed: ${windSpeed} mph`;
 
+  let description =(response.data.weather[0].description);
+    let weatherDescription = document.querySelector(".weather-description");
+    weatherDescription.innerHTML = `${description}`;
+
+    let windSpeed = Math.round(response.data.wind.speed);
+    let speed = document.querySelector(".wind");
+    speed.innerHTML = `Wind Speed: ${windSpeed} mph`;
+    
+    let humidity =(response.data.main.humidity);
+    let humid = document.querySelector(".humidity");
+    humid.innerHTML = `Humidity: ${humidity}%`;
+    console.log(response.data)
 }
 
 function displayPosition(position) {
