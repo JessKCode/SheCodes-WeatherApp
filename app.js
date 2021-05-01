@@ -151,30 +151,3 @@ function getLocation(place) {
 
 let place = document.querySelector("#local");
 place.addEventListener("click", getLocation);
-
-function changeIcon (code){
-   let weather = (code)
-   console.log(code);
-  let icon =document.querySelector(".topIcon");
-if (weather === "01d.png"){
-    icon.innerHTML =(`<i class="fas fa-sun"></i>`);}
-if (weather === "01n.png"){
-    icon.innerHTML =(`<i class="fas fa-moon"></i>`);}
-if (weather === "02d.png"){
-    icon.innerHTML =(`<i class="fas fa-cloud-sun"></i>`);}
-if (weather === "02n.png"){
-    icon.innerHTML =(`<i class="fas fa-cloud-moon"></i>`);}
-if (weather === "03d.png" || weather === "03n.png"||weather === "04d.png"||weather === "04n.png"){
-    icon.innerHTML =(`<i class="fas fa-cloud"></i>`);}  
-if (weather === "09d.png"|| weather === "09n.png"){
-    icon.innerHTML =(`<i class="fas fa-cloud-rain"></i>`);}
-if (weather === "10d.png"|| weather === "10n.png"){
-   icon.innerHTML =(`<i class="fas fa-cloud-showers-heavy"></i>`);}
-if (weather === "11d.png"|| weather === "11n.png"){
-   icon.innerHTML =(`<i class="fas fa-bolt"></i>`);}
-if (weather === "13d.png"|| weather === "13n.png"){
-    icon.innerHTML =(`<i class="far fa-snowflake"></i>`);}
-if (weather === "50d.png"|| weather === "50n.png"){
-    icon.innerHTML =(`<i class="fas fa-smog"></i>`);}
-
-}
