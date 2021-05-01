@@ -55,6 +55,8 @@ function cityChange(event) {
     let humid = document.querySelector(".humidity");
     humid.innerHTML = `Humidity: ${humidity}%`;
 
+    //icon changer
+
     let weather= (response.data.weather[0].icon);
      console.log(weather);
 
@@ -110,6 +112,7 @@ function showCurrentWeather(response) {
     let humid = document.querySelector(".humidity");
     humid.innerHTML = `Humidity: ${humidity}%`;
 
+//icon changer
 
  let weather= (response.data.weather[0].icon);
      console.log(weather);
