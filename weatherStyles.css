@@ -5,6 +5,7 @@ body {
 
 h1 {
   line-height: 50px;
+  text-transform: capitalize;
 }
 
 strong {
@@ -52,6 +53,9 @@ strong {
   line-height: 50px;
   font-size: 22px;
   padding-bottom: 15px;
+}
+.weather-description {
+  text-transform: capitalize;
 }
 .link {
   margin-top: 20px;
