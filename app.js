@@ -10,12 +10,17 @@ let days = [
   "Saturday"
 ];
 let day = days[now.getDay()];
-
-let hour = now.getHours();
+let hours = now.getHours();
+if (hours > 10){
+  hours=`0${hours}`;
+} 
 let minute = now.getMinutes();
+if (minute > 10) {
+  minute= `0${minute}`;
+}
 
 let dayTime = document.querySelector("h3");
-dayTime.innerHTML = `${day} ${hour}:${minute}`;
+dayTime.innerHTML = `${day} ${hours}:${minute}`;
 
 //City Search and change
 function cityChange(event) {
@@ -28,7 +33,6 @@ function cityChange(event) {
 
   function showWeather(response) {
     let dayTemp = Math.round(response.data.main.temp);
-    console.log(dayTemp);
     let headTemp = `${dayTemp}°F`;
     let h2 = document.querySelector("h2");
     h2.innerHTML = headTemp;
@@ -50,9 +54,35 @@ function cityChange(event) {
     let humidity =(response.data.main.humidity);
     let humid = document.querySelector(".humidity");
     humid.innerHTML = `Humidity: ${humidity}%`;
-    console.log(response.data)
+
+    let weather= (response.data.weather[0].icon);
+     console.log(weather);
+
+  let icon =document.querySelector(".topIcon");
+if (weather === `01d`){
+    icon.innerHTML =(`<i class="fas fa-sun"></i>`);}
+if (weather === `01n`){
+    icon.innerHTML =(`<i class="fas fa-moon"></i>`);}
+if (weather === `02d`){
+    icon.innerHTML =(`<i class="fas fa-cloud-sun"></i>`);}
+if (weather === "02n"){
+    icon.innerHTML =(`<i class="fas fa-cloud-moon"></i>`);}
+if (weather === "03d" || weather === "03n"||weather === "04d"||weather === "04n"){
+    icon.innerHTML =(`<i class="fas fa-cloud"></i>`);}  
+if (weather === "09d"|| weather === "09n"){
+    icon.innerHTML =(`<i class="fas fa-cloud-rain"></i>`);}
+if (weather === "10d"|| weather === "10n"){
+   icon.innerHTML =(`<i class="fas fa-cloud-showers-heavy"></i>`);}
+if (weather === "11d"|| weather === "11n"){
+   icon.innerHTML =(`<i class="fas fa-bolt"></i>`);}
+if (weather === "13d"|| weather === "13n"){
+    icon.innerHTML =(`<i class="far fa-snowflake"></i>`);}
+if (weather === "50d"|| weather === "50n"){
+    icon.innerHTML =(`<i class="fas fa-smog"></i>`);}
+
   } 
   axios.get(apiUrl).then(showWeather);
+ 
   
 }
 
@@ -79,7 +109,32 @@ function showCurrentWeather(response) {
     let humidity =(response.data.main.humidity);
     let humid = document.querySelector(".humidity");
     humid.innerHTML = `Humidity: ${humidity}%`;
-    console.log(response.data)
+
+
+ let weather= (response.data.weather[0].icon);
+     console.log(weather);
+
+  let icon =document.querySelector(".topIcon");
+if (weather === `01d`){
+    icon.innerHTML =(`<i class="fas fa-sun"></i>`);}
+if (weather === `01n`){
+    icon.innerHTML =(`<i class="fas fa-moon"></i>`);}
+if (weather === `02d`){
+    icon.innerHTML =(`<i class="fas fa-cloud-sun"></i>`);}
+if (weather === "02n"){
+    icon.innerHTML =(`<i class="fas fa-cloud-moon"></i>`);}
+if (weather === "03d" || weather === "03n"||weather === "04d"||weather === "04n"){
+    icon.innerHTML =(`<i class="fas fa-cloud"></i>`);}  
+if (weather === "09d"|| weather === "09n"){
+    icon.innerHTML =(`<i class="fas fa-cloud-rain"></i>`);}
+if (weather === "10d"|| weather === "10n"){
+   icon.innerHTML =(`<i class="fas fa-cloud-showers-heavy"></i>`);}
+if (weather === "11d"|| weather === "11n"){
+   icon.innerHTML =(`<i class="fas fa-bolt"></i>`);}
+if (weather === "13d"|| weather === "13n"){
+    icon.innerHTML =(`<i class="far fa-snowflake"></i>`);}
+if (weather === "50d"|| weather === "50n"){
+    icon.innerHTML =(`<i class="fas fa-smog"></i>`);}
 }
 
 function displayPosition(position) {
@@ -88,12 +143,38 @@ function displayPosition(position) {
   let apiKey = `e411a3752881f98038e4e57881b9b78f`;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(showCurrentWeather);
-  console.log(apiUrl);
 }
 
 function getLocation(place) {
   navigator.geolocation.getCurrentPosition(displayPosition);
 }
+
 let place = document.querySelector("#local");
 place.addEventListener("click", getLocation);
 
+function changeIcon (code){
+   let weather = (code)
+   console.log(code);
+  let icon =document.querySelector(".topIcon");
+if (weather === "01d.png"){
+    icon.innerHTML =(`<i class="fas fa-sun"></i>`);}
+if (weather === "01n.png"){
+    icon.innerHTML =(`<i class="fas fa-moon"></i>`);}
+if (weather === "02d.png"){
+    icon.innerHTML =(`<i class="fas fa-cloud-sun"></i>`);}
+if (weather === "02n.png"){
+    icon.innerHTML =(`<i class="fas fa-cloud-moon"></i>`);}
+if (weather === "03d.png" || weather === "03n.png"||weather === "04d.png"||weather === "04n.png"){
+    icon.innerHTML =(`<i class="fas fa-cloud"></i>`);}  
+if (weather === "09d.png"|| weather === "09n.png"){
+    icon.innerHTML =(`<i class="fas fa-cloud-rain"></i>`);}
+if (weather === "10d.png"|| weather === "10n.png"){
+   icon.innerHTML =(`<i class="fas fa-cloud-showers-heavy"></i>`);}
+if (weather === "11d.png"|| weather === "11n.png"){
+   icon.innerHTML =(`<i class="fas fa-bolt"></i>`);}
+if (weather === "13d.png"|| weather === "13n.png"){
+    icon.innerHTML =(`<i class="far fa-snowflake"></i>`);}
+if (weather === "50d.png"|| weather === "50n.png"){
+    icon.innerHTML =(`<i class="fas fa-smog"></i>`);}
+
+}
