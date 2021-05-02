@@ -58,18 +58,17 @@ function cityChange(event) {
     //icon changer
 
     let weather= (response.data.weather[0].icon);
-     console.log(weather);
 
   let icon =document.querySelector(".topIcon");
 if (weather === `01d`){
     icon.innerHTML =(`<i class="fas fa-sun"></i>`);}
 if (weather === `01n`){
     icon.innerHTML =(`<i class="fas fa-moon"></i>`);}
-if (weather === `02d`){
+if (weather === `02d`||weather === "04d"){
     icon.innerHTML =(`<i class="fas fa-cloud-sun"></i>`);}
-if (weather === "02n"){
+if (weather === "02n"||weather === "04n"){
     icon.innerHTML =(`<i class="fas fa-cloud-moon"></i>`);}
-if (weather === "03d" || weather === "03n"||weather === "04d"||weather === "04n"){
+if (weather === "03d" || weather === "03n"){
     icon.innerHTML =(`<i class="fas fa-cloud"></i>`);}  
 if (weather === "09d"|| weather === "09n"){
     icon.innerHTML =(`<i class="fas fa-cloud-rain"></i>`);}
@@ -84,7 +83,7 @@ if (weather === "50d"|| weather === "50n"){
 
   } 
   axios.get(apiUrl).then(showWeather);
- 
+ console.log(apiUrl);
   
 }
 
@@ -115,18 +114,17 @@ function showCurrentWeather(response) {
 //icon changer
 
  let weather= (response.data.weather[0].icon);
-     console.log(weather);
 
   let icon =document.querySelector(".topIcon");
 if (weather === `01d`){
     icon.innerHTML =(`<i class="fas fa-sun"></i>`);}
 if (weather === `01n`){
     icon.innerHTML =(`<i class="fas fa-moon"></i>`);}
-if (weather === `02d`){
+if (weather === `02d`||weather === "04d"){
     icon.innerHTML =(`<i class="fas fa-cloud-sun"></i>`);}
-if (weather === "02n"){
+if (weather === "02n"||weather === "04n"){
     icon.innerHTML =(`<i class="fas fa-cloud-moon"></i>`);}
-if (weather === "03d" || weather === "03n"||weather === "04d"||weather === "04n"){
+if (weather === "03d" || weather === "03n"){
     icon.innerHTML =(`<i class="fas fa-cloud"></i>`);}  
 if (weather === "09d"|| weather === "09n"){
     icon.innerHTML =(`<i class="fas fa-cloud-rain"></i>`);}
