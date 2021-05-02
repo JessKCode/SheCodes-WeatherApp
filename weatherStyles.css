@@ -59,6 +59,13 @@ strong {
   line-height: 50px;
   font-size: 22px;
 }
+.celsius {
+  color: #000;
+  text-decoration: none;
+}
+.celsius:hover {
+  cursor: default;
+}
 .link {
   margin-top: 20px;
   font-size: 12px;

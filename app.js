@@ -28,9 +28,11 @@ function cityChange(event) {
   let input = document.querySelector("#search-input");
   let h1 = document.querySelector("h1");
   h1.innerHTML = `${input.value}`;
-
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=e411a3752881f98038e4e57881b9b78f&units=imperial`;
-
+  
+  axios.get(apiUrl).then(showWeather);
+  console.log(apiUrl);
+}
   function showWeather(response) {
     let dayTemp = Math.round(response.data.main.temp);
     let headTemp = `${dayTemp}°`;
@@ -80,12 +82,8 @@ if (weather === "13d"|| weather === "13n"){
     icon.innerHTML =(`<i class="far fa-snowflake"></i>`);}
 if (weather === "50d"|| weather === "50n"){
     icon.innerHTML =(`<i class="fas fa-smog"></i>`);}
+} 
 
-  } 
-  axios.get(apiUrl).then(showWeather);
- console.log(apiUrl);
-  
-}
 
 let city = document.querySelector("#search-city");
 city.addEventListener("submit", cityChange);
