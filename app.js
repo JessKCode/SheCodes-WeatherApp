@@ -33,7 +33,7 @@ function cityChange(event) {
 
   function showWeather(response) {
     let dayTemp = Math.round(response.data.main.temp);
-    let headTemp = `${dayTemp}°F`;
+    let headTemp = `${dayTemp}°`;
     let h2 = document.querySelector("h2");
     h2.innerHTML = headTemp;
 

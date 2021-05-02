@@ -7,7 +7,6 @@ h1 {
   line-height: 50px;
   text-transform: capitalize;
 }
-
 strong {
   font-size: 45px;
 }
@@ -52,10 +51,13 @@ strong {
 .topTime {
   line-height: 50px;
   font-size: 22px;
-  padding-bottom: 15px;
 }
 .weather-description {
   text-transform: capitalize;
+}
+.unitConversion {
+  line-height: 50px;
+  font-size: 22px;
 }
 .link {
   margin-top: 20px;
