@@ -7,11 +7,17 @@ function showWeather(response) {
   let h2 = document.querySelector("h2");
   h2.innerHTML = headTemp;
 
+  maxTemp = response.data.main.temp_max;
+  minTemp = response.data.main.temp_min;
+  let highLow = ` H:${Math.round(maxTemp)}° L:${Math.round(minTemp)}°`;
+  let hl = document.querySelector(".topHighLow");
+  hl.innerHTML = highLow;
+
   let description =(response.data.weather[0].description);
   let weatherDescription = document.querySelector(".weather-description");
   weatherDescription.innerHTML = `${description}`;
 
-  mph = response.data.wind.speed
+  mph = response.data.wind.speed;
   let windSpeed = Math.round(mph);
   let speed = document.querySelector(".wind");
   speed.innerHTML = `Wind Speed: ${windSpeed} mph`;
@@ -92,6 +98,11 @@ function displayMetric (event){
   kilometer.innerHTML=`Wind speed: ${Math.round(kph)} kph`;
   fahrenheitLink.innerHTML=`°F`;
   celsius.innerHTML=`<strong>°C</strong>`;
+  let max= (maxTemp-32)* 5/9;
+  let min= (minTemp-32)* 5/9;
+  let highLow = ` H:${Math.round(max)}° L:${Math.round(min)}°`;
+  let hl = document.querySelector(".topHighLow");
+  hl.innerHTML = highLow;
 
 }
 
@@ -102,10 +113,15 @@ function displayImperial (event){
   event.preventDefault();
   let tempElement =document.querySelector("h2");
   tempElement.innerHTML=Math.round(fahrenheit)+`°`;
+  
   let mile=document.querySelector(".wind");
   mile.innerHTML=`Wind speed: ${Math.round(mph)} mph`;
   fahrenheitLink.innerHTML=`<strong>°F</strong>`
   celsius.innerHTML=`°C`;
+  
+  let highLow = ` H:${Math.round(maxTemp)}° L:${Math.round(minTemp)}°`;
+  let hl = document.querySelector(".topHighLow");
+  hl.innerHTML = highLow;
 }
 
 let fahrenheitLink= document.querySelector(".fahrenheit");
@@ -113,4 +129,5 @@ fahrenheitLink.addEventListener("click", displayImperial);
 
 let fahrenheit = null;
 let mph = null;
-
+let maxTemp = null;
+let minTemp = null;
