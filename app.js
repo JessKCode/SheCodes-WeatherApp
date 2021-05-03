@@ -90,7 +90,7 @@ function displayMetric (event){
   let kph= mph* 1.609;
   let kilometer =document.querySelector(".wind");
   kilometer.innerHTML=`Wind speed: ${Math.round(kph)} kph`;
-  fahrenheitLink.innerHTML=`F°`;
+  fahrenheitLink.innerHTML=`°F`;
   celsius.innerHTML=`<strong>°C</strong>`;
 
 }
