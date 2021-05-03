@@ -1,27 +1,4 @@
-let now = new Date();
-
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday"
-];
-let day = days[now.getDay()];
-let hours = now.getHours();
-if (hours > 10){
-  hours=`0${hours}`;
-} 
-let minute = now.getMinutes();
-if (minute > 10) {
-  minute= `0${minute}`;
-}
-
-let dayTime = document.querySelector("h3");
-dayTime.innerHTML = `${day} ${hours}:${minute}`;
-
+//clock 
 //Display weather in top box
 function showWeather(response) {
   fahrenheit = response.data.main.temp;
@@ -109,10 +86,13 @@ function displayMetric (event){
   event.preventDefault();
   let celsiusTemp= (fahrenheit -32)* 5/9;
   let tempElement =document.querySelector("h2");
-  tempElement.innerHTML=Math.round(celsiusTemp)+`<small>°C</small>`;
+  tempElement.innerHTML=Math.round(celsiusTemp)+`°`;
   let kph= mph* 1.609;
   let kilometer =document.querySelector(".wind");
   kilometer.innerHTML=`Wind speed: ${Math.round(kph)} kph`;
+  fahrenheitLink.innerHTML=`F°`;
+  celsius.innerHTML=`<strong>°C</strong>`;
+
 }
 let celsius= document.querySelector(".celsius");
 celsius.addEventListener("click", displayMetric);
@@ -120,10 +100,11 @@ celsius.addEventListener("click", displayMetric);
 function displayImperial (event){
   event.preventDefault();
   let tempElement =document.querySelector("h2");
-  tempElement.innerHTML=Math.round(fahrenheit)+`<small>°F</small>`;
+  tempElement.innerHTML=Math.round(fahrenheit)+`°`;
   let mile=document.querySelector(".wind");
   mile.innerHTML=`Wind speed: ${Math.round(mph)} mph`;
-
+  fahrenheitLink.innerHTML=`<strong>°F</strong>`
+  celsius.innerHTML=`°C`;
 }
 
 let fahrenheitLink= document.querySelector(".fahrenheit");

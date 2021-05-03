@@ -8,9 +8,8 @@ h1 {
   text-transform: capitalize;
 }
 strong {
-  font-size: 45px;
+  font-size: 24px;
 }
-
 .page-wrapper {
   max-width: 600px;
   display: block;
@@ -48,16 +47,12 @@ strong {
   border-radius: 30px;
   box-shadow: 9px 9px 5px rgba(0, 0, 0, 0.068);
 }
-.topTime {
-  line-height: 50px;
-  font-size: 22px;
-}
 .weather-description {
   text-transform: capitalize;
 }
 .unitConversion {
   line-height: 50px;
-  font-size: 22px;
+  font-size: 20px;
 }
 .celsius {
   color: #000;
