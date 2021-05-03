@@ -94,6 +94,7 @@ function displayMetric (event){
   celsius.innerHTML=`<strong>°C</strong>`;
 
 }
+
 let celsius= document.querySelector(".celsius");
 celsius.addEventListener("click", displayMetric);
 
