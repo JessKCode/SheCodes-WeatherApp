@@ -24,22 +24,24 @@ dayTime.innerHTML = `${day} ${hours}:${minute}`;
 
 //Display weather in top box
 function showWeather(response) {
-  let temperature = Math.round(response.data.main.temp);
+  fahrenheit = response.data.main.temp;
+  let temperature = Math.round(fahrenheit);
   let headTemp = `${temperature}°`;
   let h2 = document.querySelector("h2");
   h2.innerHTML = headTemp;
 
   let description =(response.data.weather[0].description);
-    let weatherDescription = document.querySelector(".weather-description");
-    weatherDescription.innerHTML = `${description}`;
+  let weatherDescription = document.querySelector(".weather-description");
+  weatherDescription.innerHTML = `${description}`;
 
-    let windSpeed = Math.round(response.data.wind.speed);
-    let speed = document.querySelector(".wind");
-    speed.innerHTML = `Wind Speed: ${windSpeed} mph`;
+  mph = response.data.wind.speed
+  let windSpeed = Math.round(mph);
+  let speed = document.querySelector(".wind");
+  speed.innerHTML = `Wind Speed: ${windSpeed} mph`;
     
-    let humidity =(response.data.main.humidity);
-    let humid = document.querySelector(".humidity");
-    humid.innerHTML = `Humidity: ${humidity}%`;
+  let humidity =(response.data.main.humidity);
+  let humid = document.querySelector(".humidity");
+  humid.innerHTML = `Humidity: ${humidity}%`;
 
 //icon changer
 
@@ -100,3 +102,33 @@ function getLocation(place) {
 
 let place = document.querySelector("#local");
 place.addEventListener("click", getLocation);
+
+//Unit conversion
+
+function displayMetric (event){
+  event.preventDefault();
+  let celsiusTemp= (fahrenheit -32)* 5/9;
+  let tempElement =document.querySelector("h2");
+  tempElement.innerHTML=Math.round(celsiusTemp)+`<small>°C</small>`;
+  let kph= mph* 1.609;
+  let kilometer =document.querySelector(".wind");
+  kilometer.innerHTML=`Wind speed: ${Math.round(kph)} kph`;
+}
+let celsius= document.querySelector(".celsius");
+celsius.addEventListener("click", displayMetric);
+
+function displayImperial (event){
+  event.preventDefault();
+  let tempElement =document.querySelector("h2");
+  tempElement.innerHTML=Math.round(fahrenheit)+`<small>°F</small>`;
+  let mile=document.querySelector(".wind");
+  mile.innerHTML=`Wind speed: ${Math.round(mph)} mph`;
+
+}
+
+let fahrenheitLink= document.querySelector(".fahrenheit");
+fahrenheitLink.addEventListener("click", displayImperial);
+
+let fahrenheit = null;
+let mph = null;
+

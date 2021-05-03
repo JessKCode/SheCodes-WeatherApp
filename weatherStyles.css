@@ -66,6 +66,13 @@ strong {
 .celsius:hover {
   cursor: default;
 }
+.fahrenheit {
+  color: #000;
+  text-decoration: none;
+}
+.fahrenheit:hover {
+  cursor: default;
+}
 .link {
   margin-top: 20px;
   font-size: 12px;
