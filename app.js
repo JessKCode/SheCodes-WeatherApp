@@ -1,4 +1,4 @@
-//clock 
+
 //Display weather in top box
 function showWeather(response) {
   fahrenheit = response.data.main.temp;
@@ -51,7 +51,8 @@ if (weather === "13d"|| weather === "13n"){
     icon.innerHTML =(`<i class="far fa-snowflake"></i>`);}
 if (weather === "50d"|| weather === "50n"){
     icon.innerHTML =(`<i class="fas fa-smog"></i>`);}
-}
+// weekly forcast
+  }
 
 //Search by City
 function cityChange(event) {
@@ -59,8 +60,9 @@ function cityChange(event) {
   let input = document.querySelector("#search-input");
   let h1 = document.querySelector("h1");
   h1.innerHTML = `${input.value}`;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=e411a3752881f98038e4e57881b9b78f&units=imperial`;
-  
+  let key = `e411a3752881f98038e4e57881b9b78f`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=${key}&units=imperial`;
+  let 
   axios.get(apiUrl).then(showWeather);
   console.log(apiUrl);
 }
