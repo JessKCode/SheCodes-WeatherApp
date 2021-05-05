@@ -62,9 +62,9 @@ function cityChange(event) {
   h1.innerHTML = `${input.value}`;
   let key = `e411a3752881f98038e4e57881b9b78f`;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=${key}&units=imperial`;
-  let 
+  let forecastApiUrl = `https://api.openweathermap.org/data/2.5/forecast/daily?q=${input.value}&cnt={7}&appid=${key}&units=imperial`;
   axios.get(apiUrl).then(showWeather);
-  console.log(apiUrl);
+  console.log(forecastApiUrl);
 }
   
 let city = document.querySelector("#search-city");
@@ -74,8 +74,7 @@ city.addEventListener("submit", cityChange);
 function displayPosition(position) {
   let lat = position.coords.latitude;
   let long = position.coords.longitude;
-  let apiKey = `e411a3752881f98038e4e57881b9b78f`;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=imperial`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${key}&units=imperial`;
   let h1 = document.querySelector("h1");
   h1.innerHTML = `My Location`;
   axios.get(apiUrl).then(showWeather);
@@ -129,7 +128,12 @@ function displayImperial (event){
 let fahrenheitLink= document.querySelector(".fahrenheit");
 fahrenheitLink.addEventListener("click", displayImperial);
 
+let key = `e411a3752881f98038e4e57881b9b78f`;
 let fahrenheit = null;
 let mph = null;
 let maxTemp = null;
 let minTemp = null;
+
+function showForecast(event) {
+  console.log(event);
+}

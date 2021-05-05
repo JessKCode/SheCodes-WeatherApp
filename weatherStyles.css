@@ -89,13 +89,20 @@ hr {
   padding-top: 20px;
   text-align: center;
   font-size: 14px;
-  font-weight: bolder;
+  font-weight: 900;
 }
 
 .icon {
   font-size: 30px;
 }
+.temp {
+  font-size: 20px;
+}
 .link {
   margin-top: 20px;
   font-size: 12px;
+}
+#firstDay {
+  background-color: rgba(0, 0, 0, 0.041);
+  border-radius: 25px;
 }
