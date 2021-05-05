@@ -1,4 +1,3 @@
-
 //Display weather in top box
 function showWeather(response) {
   fahrenheit = response.data.main.temp;
@@ -27,7 +26,6 @@ function showWeather(response) {
   humid.innerHTML = `Humidity: ${humidity}%`;
 
 //icon changer
-
  let weather= (response.data.weather[0].icon);
 
   let icon =document.querySelector(".topIcon");
@@ -51,8 +49,7 @@ if (weather === "13d"|| weather === "13n"){
     icon.innerHTML =(`<i class="far fa-snowflake"></i>`);}
 if (weather === "50d"|| weather === "50n"){
     icon.innerHTML =(`<i class="fas fa-smog"></i>`);}
-// weekly forcast
-  }
+}
 
 //Search by City
 function cityChange(event) {
@@ -66,10 +63,6 @@ function cityChange(event) {
   axios.get(apiUrl).then(showWeather);
   console.log(forecastApiUrl);
 }
-  
-let city = document.querySelector("#search-city");
-city.addEventListener("submit", cityChange);
-
 //Search by location
 function displayPosition(position) {
   let lat = position.coords.latitude;
@@ -79,16 +72,11 @@ function displayPosition(position) {
   h1.innerHTML = `My Location`;
   axios.get(apiUrl).then(showWeather);
 }
-
 function getLocation(place) {
   navigator.geolocation.getCurrentPosition(displayPosition);
 }
 
-let place = document.querySelector("#local");
-place.addEventListener("click", getLocation);
-
 //Unit conversion
-
 function displayMetric (event){
   event.preventDefault();
   let celsiusTemp= (fahrenheit -32)* 5/9;
@@ -104,12 +92,7 @@ function displayMetric (event){
   let highLow = ` H:${Math.round(max)}° L:${Math.round(min)}°`;
   let hl = document.querySelector(".topHighLow");
   hl.innerHTML = highLow;
-
 }
-
-let celsius= document.querySelector(".celsius");
-celsius.addEventListener("click", displayMetric);
-
 function displayImperial (event){
   event.preventDefault();
   let tempElement =document.querySelector("h2");
@@ -124,16 +107,53 @@ function displayImperial (event){
   let hl = document.querySelector(".topHighLow");
   hl.innerHTML = highLow;
 }
+// forcast
+function showForecast(event) {
+  let element = document.querySelector(".weekForcast");
+  
+  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  
+  let html = `<div class="row">`;
+  days.forEach(function (day) {
+  html= html+
+  `<div class="col">
+    <p class="day">
+    ${day}
+    <br />
+    <p>
+    <div class="icon">
+    <i class="fas fa-cloud"></i>
+    </div>
+            
+    <p class="temp">
+      48°
+    </p>
+    <p class="dayHighLow">
+      H:48° <br />L:36°
+    </p>
+    </div>`;
+  });               
+    html = html +`</div>`;
+    element.innerHTML= html;
+}
+
+showForecast ();
+
+//universal
+let city = document.querySelector("#search-city");
+city.addEventListener("submit", cityChange);
+
+let place = document.querySelector("#local");
+place.addEventListener("click", getLocation);
 
 let fahrenheitLink= document.querySelector(".fahrenheit");
 fahrenheitLink.addEventListener("click", displayImperial);
+let celsius= document.querySelector(".celsius");
+celsius.addEventListener("click", displayMetric);
 
 let key = `e411a3752881f98038e4e57881b9b78f`;
+
 let fahrenheit = null;
 let mph = null;
 let maxTemp = null;
 let minTemp = null;
-
-function showForecast(event) {
-  console.log(event);
-}
