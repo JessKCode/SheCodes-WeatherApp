@@ -37,11 +37,11 @@ function showWeather(response) {
   hl.innerHTML = highLow;
 
   let time = document.querySelector(".time");
-  time.innerHTML = `Last updated:${formatDate(response.data.dt * 1000)}`;
+  time.innerHTML = `Last updated: ${formatDate(response.data.dt * 1000)}`;
   
   let description =(response.data.weather[0].description);
   let weatherDescription = document.querySelector(".weather-description");
-  weatherDescription.innerHTML = `${description}`;
+  weatherDescription.innerHTML = `Description: ${description}`;
 
   mph = response.data.wind.speed;
   let windSpeed = Math.round(mph);
@@ -76,6 +76,9 @@ if (weather === "13d"|| weather === "13n"){
     icon.innerHTML =(`<i class="far fa-snowflake"></i>`);}
 if (weather === "50d"|| weather === "50n"){
     icon.innerHTML =(`<i class="fas fa-smog"></i>`);}
+
+    //forecast
+    getForecast(response.data);
 }
 
 //Search by City
@@ -86,15 +89,13 @@ function cityChange(event) {
   h1.innerHTML = `${input.value}`;
   let key = `e411a3752881f98038e4e57881b9b78f`;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=${key}&units=imperial`;
-  let forecastApiUrl = `https://api.openweathermap.org/data/2.5/forecast/daily?q=${input.value}&cnt={7}&appid=${key}&units=imperial`;
   axios.get(apiUrl).then(showWeather);
-  console.log(forecastApiUrl);
-}
+ }
 //Search by location
 function displayPosition(position) {
   let lat = position.coords.latitude;
-  let long = position.coords.longitude;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${key}&units=imperial`;
+  let lon = position.coords.longitude;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}&units=imperial`;
   let h1 = document.querySelector("h1");
   h1.innerHTML = `My Location`;
   axios.get(apiUrl).then(showWeather);
@@ -135,6 +136,12 @@ function displayImperial (event){
   hl.innerHTML = highLow;
 }
 // forcast
+function getForecast (coordinates) {
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.coord.lat}&lon=${coordinates.coord.lon}&exclude=minutely,hourly,alerts&appid=${key}&units=Imperial`;
+  axios.get(apiUrl).then(showForecast);
+  console.log(apiUrl);
+}
+
 function showForecast(event) {
   let element = document.querySelector(".weekForcast");
   
@@ -163,8 +170,6 @@ function showForecast(event) {
     html = html +`</div>`;
     element.innerHTML= html;
 }
-
-showForecast ();
 
 //universal
 let city = document.querySelector("#search-city");
