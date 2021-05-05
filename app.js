@@ -1,3 +1,27 @@
+// clock
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  let days = [
+    "Sun",
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thur",
+    "Fri",
+    "Sat",
+  ];
+  let day = days[date.getDay()];
+  return `${day} ${hours}:${minutes}`;
+}
 //Display weather in top box
 function showWeather(response) {
   fahrenheit = response.data.main.temp;
@@ -12,6 +36,9 @@ function showWeather(response) {
   let hl = document.querySelector(".topHighLow");
   hl.innerHTML = highLow;
 
+  let time = document.querySelector(".time");
+  time.innerHTML = `Last updated:${formatDate(response.data.dt * 1000)}`;
+  
   let description =(response.data.weather[0].description);
   let weatherDescription = document.querySelector(".weather-description");
   weatherDescription.innerHTML = `${description}`;

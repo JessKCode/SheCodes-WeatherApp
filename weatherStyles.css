@@ -10,10 +10,14 @@ h1 {
 strong {
   font-size: 24px;
 }
+h3 {
+  text-align: left;
+  line-height: 50px;
+  padding-top: 10px;
+  padding-left: 50px;
+}
 hr {
-  margin: 0 auto;
-  display: block;
-  max-width: 175px;
+  max-width: 200px;
   border: 1px solid black;
 }
 .page-wrapper {
@@ -45,21 +49,8 @@ hr {
   color: #000;
   font-size: 45px;
 }
-.info-box {
-  margin-top: 20px;
-  padding-top: 18px;
-  padding-left: 50px;
-  border: #000 solid 1px;
-  border-radius: 30px;
-  box-shadow: 9px 9px 5px rgba(0, 0, 0, 0.068);
-}
-.info {
-  font-size: 18px;
-  font-weight: 500;
-}
-.weather-description {
-  padding-top: 30px;
-  text-transform: capitalize;
+.topHighLow {
+  margin-bottom: 0px;
 }
 .unitConversion {
   line-height: 50px;
@@ -79,6 +70,25 @@ hr {
 .fahrenheit:hover {
   cursor: default;
 }
+
+.info {
+  text-align: left;
+  padding-top: 50px;
+  padding-left: 50px;
+  font-size: 18px;
+}
+.weather-description {
+  text-transform: capitalize;
+}
+
+.info-box {
+  margin-top: 20px;
+  padding-top: 18px;
+  padding-left: 50px;
+  border: #000 solid 1px;
+  border-radius: 30px;
+  box-shadow: 9px 9px 5px rgba(0, 0, 0, 0.068);
+}
 .weekForcast {
   margin-top: 20px;
   background: linear-gradient(to top, white 0%, #dfe9f3 100%);
@@ -91,7 +101,6 @@ hr {
   font-size: 14px;
   font-weight: 900;
 }
-
 .icon {
   font-size: 30px;
 }
