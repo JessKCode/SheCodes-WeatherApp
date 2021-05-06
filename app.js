@@ -53,19 +53,19 @@ function showWeather(response) {
   humid.innerHTML = `Humidity: ${humidity}%`;
 
 //icon changer
- let weather= (response.data.weather[0].icon);
+let weather= (response.data.weather[0].icon);
 
   let icon =document.querySelector(".topIcon");
 if (weather === `01d`){
-    icon.innerHTML =(`<i class="fas fa-sun"></i>`);}
+  icon.innerHTML =(`<i class="fas fa-sun"></i>`);}
 if (weather === `01n`){
-    icon.innerHTML =(`<i class="fas fa-moon"></i>`);}
+  icon.innerHTML =(`<i class="fas fa-moon"></i>`);}
 if (weather === `02d`||weather === "04d"){
-    icon.innerHTML =(`<i class="fas fa-cloud-sun"></i>`);}
+  icon.innerHTML =(`<i class="fas fa-cloud-sun"></i>`);}
 if (weather === "02n"||weather === "04n"){
-    icon.innerHTML =(`<i class="fas fa-cloud-moon"></i>`);}
+  icon.innerHTML =(`<i class="fas fa-cloud-moon"></i>`);}
 if (weather === "03d" || weather === "03n"){
-    icon.innerHTML =(`<i class="fas fa-cloud"></i>`);}  
+  icon.innerHTML =(`<i class="fas fa-cloud"></i>`);}  
 if (weather === "09d"|| weather === "09n"){
     icon.innerHTML =(`<i class="fas fa-cloud-rain"></i>`);}
 if (weather === "10d"|| weather === "10n"){
@@ -139,31 +139,36 @@ function displayImperial (event){
 function getForecast (coordinates) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.coord.lat}&lon=${coordinates.coord.lon}&exclude=minutely,hourly,alerts&appid=${key}&units=Imperial`;
   axios.get(apiUrl).then(showForecast);
-  console.log(apiUrl);
 }
 
 function showForecast(event) {
+  
   let element = document.querySelector(".weekForcast");
   
-  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  
+  let forecast = event.data.daily;
   let html = `<div class="row">`;
-  days.forEach(function (day) {
+  forecast.forEach(function (forecastDay) {
   html= html+
   `<div class="col">
     <p class="day">
-    ${day}
+    ${forecastDay.dt}
     <br />
     <p>
     <div class="icon">
-    <i class="fas fa-cloud"></i>
+     <img
+          src="http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png"
+          alt=""
+          width="42"
+        />
     </div>
             
     <p class="temp">
-      48°
+      ${Math.round(forecastDay.temp.day)}°
     </p>
     <p class="dayHighLow">
-      H:48° <br />L:36°
+      H:${Math.round(forecastDay.temp.max)}° <br />L:${Math.round(forecastDay.temp.min)}°
     </p>
     </div>`;
   });               
@@ -180,6 +185,7 @@ place.addEventListener("click", getLocation);
 
 let fahrenheitLink= document.querySelector(".fahrenheit");
 fahrenheitLink.addEventListener("click", displayImperial);
+
 let celsius= document.querySelector(".celsius");
 celsius.addEventListener("click", displayMetric);
 
