@@ -51,36 +51,37 @@ function showWeather(response) {
   let humidity =(response.data.main.humidity);
   let humid = document.querySelector(".humidity");
   humid.innerHTML = `Humidity: ${humidity}%`;
-
-//icon changer
-let weather= (response.data.weather[0].icon);
-
+ 
   let icon =document.querySelector(".topIcon");
-if (weather === `01d`){
-  icon.innerHTML =(`<i class="fas fa-sun"></i>`);}
-if (weather === `01n`){
-  icon.innerHTML =(`<i class="fas fa-moon"></i>`);}
-if (weather === `02d`||weather === "04d"){
-  icon.innerHTML =(`<i class="fas fa-cloud-sun"></i>`);}
-if (weather === "02n"||weather === "04n"){
-  icon.innerHTML =(`<i class="fas fa-cloud-moon"></i>`);}
-if (weather === "03d" || weather === "03n"){
-  icon.innerHTML =(`<i class="fas fa-cloud"></i>`);}  
-if (weather === "09d"|| weather === "09n"){
-    icon.innerHTML =(`<i class="fas fa-cloud-rain"></i>`);}
-if (weather === "10d"|| weather === "10n"){
-   icon.innerHTML =(`<i class="fas fa-cloud-showers-heavy"></i>`);}
-if (weather === "11d"|| weather === "11n"){
-   icon.innerHTML =(`<i class="fas fa-bolt"></i>`);}
-if (weather === "13d"|| weather === "13n"){
-    icon.innerHTML =(`<i class="far fa-snowflake"></i>`);}
-if (weather === "50d"|| weather === "50n"){
-    icon.innerHTML =(`<i class="fas fa-smog"></i>`);}
-
-    //forecast
-    getForecast(response.data);
+  icon.innerHTML =`${iconTemplate(response.data.weather[0].icon)}`;
+  
+  getForecast(response.data);
 }
-
+function iconTemplate (response){
+  
+let weather= (response);
+if (weather === `01d`){
+    return `<i class="fas fa-sun"></i>`;}
+if (weather === `01n`){
+    return `<i class="fas fa-moon"></i>`;}
+if (weather === `02d`||weather === "04d"){
+    return `<i class="fas fa-cloud-sun"></i>`;}
+if (weather === "02n"||weather === "04n"){
+    return `<i class="fas fa-cloud-moon"></i>`;}
+if (weather === "03d" || weather === "03n"){
+    return `<i class="fas fa-cloud"></i>`;}  
+if (weather === "09d"|| weather === "09n"){
+    return `<i class="fas fa-cloud-rain"></i>`;}
+if (weather === "10d"|| weather === "10n"){
+   return `<i class="fas fa-cloud-showers-heavy"></i>`;}
+if (weather === "11d"|| weather === "11n"){
+   return `<i class="fas fa-bolt"></i>`;}
+if (weather === "13d"|| weather === "13n"){
+    return `<i class="far fa-snowflake"></i>`;}
+if (weather === "50d"|| weather === "50n"){
+    return `<i class="fas fa-smog"></i>`;
+}
+}
 //Search by City
 function cityChange(event) {
   event.preventDefault();
@@ -155,13 +156,7 @@ function showForecast(event) {
     <br />
     <p>
     <div class="icon">
-     <img
-          src="http://openweathermap.org/img/wn/${
-            forecastDay.weather[0].icon
-          }@2x.png"
-          alt=""
-          width="42"
-        />
+        ${iconTemplate(forecastDay.weather[0].icon)}
     </div>
             
     <p class="temp">
