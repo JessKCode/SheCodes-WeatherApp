@@ -22,6 +22,20 @@ function formatDate(timestamp) {
   let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
 }
+function dayFormat (time){
+  let date = new Date(time * 1000)
+  let day = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+ return days[day];
+}
 //Display weather in top box
 function showWeather(response) {
   fahrenheit = response.data.main.temp;
@@ -58,8 +72,7 @@ function showWeather(response) {
   getForecast(response.data);
 }
 function iconTemplate (response){
-  
-let weather= (response);
+  let weather= (response);
 if (weather === `01d`){
     return `<i class="fas fa-sun"></i>`;}
 if (weather === `01n`){
@@ -138,7 +151,8 @@ function displayImperial (event){
 }
 // forcast
 function getForecast (coordinates) {
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.coord.lat}&lon=${coordinates.coord.lon}&exclude=minutely,hourly,alerts&appid=${key}&units=Imperial`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.coord.lat}&lon=${coordinates.coord.lon}&exclude=
+,minutely,hourly,alerts&appid=${key}&units=Imperial`;
   axios.get(apiUrl).then(showForecast);
 }
 
@@ -148,11 +162,12 @@ function showForecast(event) {
   
   let forecast = event.data.daily;
   let html = `<div class="row">`;
-  forecast.forEach(function (forecastDay) {
+  forecast.forEach(function (forecastDay, index) {
+    if (index <7){
   html= html+
   `<div class="col">
     <p class="day">
-    ${forecastDay.dt}
+    ${dayFormat(forecastDay.dt)}
     <br />
     <p>
     <div class="icon">
@@ -166,6 +181,7 @@ function showForecast(event) {
       H:${Math.round(forecastDay.temp.max)}° <br />L:${Math.round(forecastDay.temp.min)}°
     </p>
     </div>`;
+  }
   });               
     html = html +`</div>`;
     element.innerHTML= html;

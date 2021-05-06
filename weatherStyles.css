@@ -80,7 +80,9 @@ hr {
 .weather-description {
   text-transform: capitalize;
 }
-
+.container {
+  max-width: 705px;
+}
 .info-box {
   margin-top: 20px;
   padding-top: 18px;
