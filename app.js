@@ -2,8 +2,13 @@
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
+  let mark= `AM`;
   if (hours < 10) {
-    hours = `0${hours}`;
+    hours= `0${hours}`;
+  }
+  if (hours >12){
+    hours = `${hours - 12}`;
+    mark = `PM`;
   }
   let minutes = date.getMinutes();
   if (minutes < 10) {
@@ -20,7 +25,7 @@ function formatDate(timestamp) {
     "Sat",
   ];
   let day = days[date.getDay()];
-  return `${day} ${hours}:${minutes}`;
+  return `${day} ${hours}:${minutes} ${mark}`;
 }
 function dayFormat (time){
   let date = new Date(time * 1000)
@@ -71,6 +76,7 @@ function showWeather(response) {
   
   getForecast(response.data);
 }
+//change icon
 function iconTemplate (response){
   let weather= (response);
 if (weather === `01d`){
