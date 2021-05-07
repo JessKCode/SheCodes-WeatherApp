@@ -38,14 +38,14 @@ function dayFormat (time){
 }
 //Display weather in top box
 function showWeather(response) {
-  fahrenheit = response.data.main.temp;
+  let fahrenheit = response.data.main.temp;
   let temperature = Math.round(fahrenheit);
-  let headTemp = `${temperature}°`;
+  let headTemp = `${temperature}°<small>F</small>`;
   let h2 = document.querySelector("h2");
   h2.innerHTML = headTemp;
 
-  maxTemp = response.data.main.temp_max;
-  minTemp = response.data.main.temp_min;
+  let maxTemp = response.data.main.temp_max;
+  let minTemp = response.data.main.temp_min;
   let highLow = ` H:${Math.round(maxTemp)}° L:${Math.round(minTemp)}°`;
   let hl = document.querySelector(".topHighLow");
   hl.innerHTML = highLow;
@@ -57,7 +57,7 @@ function showWeather(response) {
   let weatherDescription = document.querySelector(".weather-description");
   weatherDescription.innerHTML = `Description: ${description}`;
 
-  mph = response.data.wind.speed;
+  let mph = response.data.wind.speed;
   let windSpeed = Math.round(mph);
   let speed = document.querySelector(".wind");
   speed.innerHTML = `Wind Speed: ${windSpeed} mph`;
@@ -118,37 +118,6 @@ function getLocation(place) {
   navigator.geolocation.getCurrentPosition(displayPosition);
 }
 
-//Unit conversion
-function displayMetric (event){
-  event.preventDefault();
-  let celsiusTemp= (fahrenheit -32)* 5/9;
-  let tempElement =document.querySelector("h2");
-  tempElement.innerHTML=Math.round(celsiusTemp)+`°`;
-  let kph= mph* 1.609;
-  let kilometer =document.querySelector(".wind");
-  kilometer.innerHTML=`Wind speed: ${Math.round(kph)} kph`;
-  fahrenheitLink.innerHTML=`°F`;
-  celsius.innerHTML=`<strong>°C</strong>`;
-  let max= (maxTemp-32)* 5/9;
-  let min= (minTemp-32)* 5/9;
-  let highLow = ` H:${Math.round(max)}° L:${Math.round(min)}°`;
-  let hl = document.querySelector(".topHighLow");
-  hl.innerHTML = highLow;
-}
-function displayImperial (event){
-  event.preventDefault();
-  let tempElement =document.querySelector("h2");
-  tempElement.innerHTML=Math.round(fahrenheit)+`°`;
-  
-  let mile=document.querySelector(".wind");
-  mile.innerHTML=`Wind speed: ${Math.round(mph)} mph`;
-  fahrenheitLink.innerHTML=`<strong>°F</strong>`
-  celsius.innerHTML=`°C`;
-  
-  let highLow = ` H:${Math.round(maxTemp)}° L:${Math.round(minTemp)}°`;
-  let hl = document.querySelector(".topHighLow");
-  hl.innerHTML = highLow;
-}
 // forcast
 function getForecast (coordinates) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.coord.lat}&lon=${coordinates.coord.lon}&exclude=
@@ -194,15 +163,5 @@ city.addEventListener("submit", cityChange);
 let place = document.querySelector("#local");
 place.addEventListener("click", getLocation);
 
-let fahrenheitLink= document.querySelector(".fahrenheit");
-fahrenheitLink.addEventListener("click", displayImperial);
-
-let celsius= document.querySelector(".celsius");
-celsius.addEventListener("click", displayMetric);
-
 let key = `e411a3752881f98038e4e57881b9b78f`;
 
-let fahrenheit = null;
-let mph = null;
-let maxTemp = null;
-let minTemp = null;
